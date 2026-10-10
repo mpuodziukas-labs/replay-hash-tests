@@ -246,6 +246,12 @@ def test_r9_pytest_is_pinned_exactly():
     assert lines and all(re.match(r"pytest==\d+\.\d+\.\d+(\s*;.*)?$", ln.strip()) for ln in lines), lines
 
 
+def test_r9_pytest_pin_has_the_tmpdir_fix():
+    # GHSA-6w46-j5rx-g56g: pytest below 9.0.3 has vulnerable tmpdir handling.
+    pins = re.findall(r"^pytest==(\d+)\.(\d+)\.(\d+)", (ROOT / "requirements.txt").read_text(), re.M)
+    assert pins and all(tuple(map(int, p)) >= (9, 0, 3) for p in pins), pins
+
+
 def test_r9_actions_pinned_to_commit_shas():
     ci = (ROOT / ".github/workflows/ci.yml").read_text()
     uses = re.findall(r"uses:\s*(\S+)", ci)

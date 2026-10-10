@@ -59,7 +59,7 @@ The corpus root hash (`corpus_hash`) is a SHA-256 over the ordered list of per-r
 ## Reproducibility notes
 
 - Seed: `0xC0FFEE` (pinned in `replay.py`).
-- The pipeline is integer-only with canonical serialization, designed to give the same corpus hash on any platform. CI runs the harness and tests on CPython 3.9 to 3.12 on Linux only, so other operating systems are untested here.
+- The pipeline is integer-only with canonical serialization, designed to give the same corpus hash on any platform. CI runs the harness and tests on CPython 3.10 to 3.12 on Linux only, so other operating systems are untested here.
 - Tamper-evidence: `replay.py`, `REFERENCE` and the tests pin the expected corpus hash. A change that re-pins the hash in the same pull request is caught by `check_reference.py`, run in CI against the value on the base branch: it fails unless a commit message carries a `REFERENCE-CHANGE:` line.
 
 ## Honesty Statement

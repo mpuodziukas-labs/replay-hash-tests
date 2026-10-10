@@ -1,7 +1,6 @@
 # Runtime: the harness (replay.py) uses ONLY the Python standard library.
 # No runtime dependencies are required to run `python replay.py`.
 
-# Test/dev dependency, pinned exactly. pytest 9 needs Python 3.10+, so the
-# 3.9 CI leg uses the last 3.9-capable release.
-pytest==9.0.3; python_version >= "3.10"
-pytest==8.4.2; python_version < "3.10"
+# Test/dev dependency, pinned exactly. 9.0.3 fixes the tmpdir advisory
+# GHSA-6w46-j5rx-g56g and needs Python 3.10+.
+pytest==9.0.3
